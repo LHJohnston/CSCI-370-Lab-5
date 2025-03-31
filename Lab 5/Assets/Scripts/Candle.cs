@@ -22,7 +22,7 @@ public class Candle : MonoBehaviour
         candle.intensity = 0;
     }
 
-    void reLight(){
+    public void reLight(){
         candle.intensity = intensity;
     }
 }
