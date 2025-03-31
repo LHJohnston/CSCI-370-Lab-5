@@ -29,6 +29,7 @@ public class Interact : MonoBehaviour
                 if (hit.collider.gameObject.TryGetComponent(out Candle recipient))
                 {
                     recipient.reLight();
+    
                 }
             }
     }
