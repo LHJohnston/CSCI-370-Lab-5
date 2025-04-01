@@ -12,21 +12,20 @@ public class MonsterMovement : MonoBehaviour
     private Vector2 mainGoal;
 
     public float speed;
-    private BoxCollider2D hitbox;
 
-    private GameObject monster;
+    public GameObject monster;
 
     private Vector2 currentPos;
 
     private int go;
 
-    private bool up;
+    private bool up = false;
 
-    private bool right;
+    private bool right = false;
 
-    private bool left;
+    private bool left = false;
 
-    private bool down;
+    private bool down = false;
 
     private List<bool> directions;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,18 +33,22 @@ public class MonsterMovement : MonoBehaviour
     {
         monsterBod = GetComponent<Rigidbody2D>();
     
-        hitbox = GetComponent<BoxCollider2D>();
         mainGoal = points[0];
         go = 0;
-        directions.Add(up);
-        directions.Add(down);
-        directions.Add(left);
-        directions.Add(right);
+        directions = new List<bool>
+        {
+            up,
+            down,
+            left,
+            right
+        };
+        currentPos = new Vector2(monster.transform.position.x, monster.transform.position.y);
+
     }
 
-    int checkDirections(){
+    int CheckDirections(){
         bool oneCorrect = false;
-        int t = -1;
+        int t = 0;
         for(int i = 0; i < 4; i ++){
             if(directions[i] == true){
                 if(oneCorrect == false){
@@ -58,24 +61,25 @@ public class MonsterMovement : MonoBehaviour
                 }
             }
         }
-        return 0;
+        return t;
     }
     // Update is called once per frame
     void Update()
     {
+        
         currentPos = new Vector2(monster.transform.position.x, monster.transform.position.y);
         if(currentPos == mainGoal){
             go += 1;
             mainGoal = points[go%5];
         }
-        moveTowardGoal();
-        chase();
+        MoveTowardGoal();
+        Chase();
         
     }
 
 
     //compare two vectors
-    int compareVectors(Vector2 v1, Vector2 v2){
+    int CompareVectors(Vector2 v1, Vector2 v2){
         if(v1.x - v2.x < 0){
             return -1;
         }
@@ -93,34 +97,35 @@ public class MonsterMovement : MonoBehaviour
         }
     }
 
-    void moveTowardGoal(){
-        if(compareVectors(currentPos, mainGoal) == -1 || checkDirections() != -1){
+    void MoveTowardGoal(){
+        if(CompareVectors(currentPos, mainGoal) == -1 || CheckDirections() == 0 || up == false){
             up = true;
-            monsterBod.AddForce(transform.up * speed);
+            monsterBod.AddForce(transform.up * speed * Time.deltaTime);
         }
-        if(compareVectors(currentPos, mainGoal) == 1 || checkDirections() != -1){
+        if(CompareVectors(currentPos, mainGoal) == 1 || CheckDirections() == 1 || down == false){
             down = true;
-            monsterBod.AddForce(transform.up * -1 * speed);
+            monsterBod.AddForce(transform.up * (-speed * Time.deltaTime));
         }
-        if(compareVectors(currentPos, mainGoal) == -2 || checkDirections() != -1){
+        if(CompareVectors(currentPos, mainGoal) == -2 || CheckDirections() == 2 || left == false){
             left = true;
-            monsterBod.AddForce(transform.right * -1 * speed);
+            monsterBod.AddForce(transform.right * (-speed * Time.deltaTime));
         }
-        if(compareVectors(currentPos, mainGoal) == 2 || checkDirections() == -1){
+        if(CompareVectors(currentPos, mainGoal) == 2 || CheckDirections() == 3 || right == false){
             right = true;
-            monsterBod.AddForce(transform.right * speed);
+            monsterBod.AddForce(transform.right * (speed * Time.deltaTime));
         }
     }
 
-    void turn(){
-       int dir = checkDirections();
-       if(dir != -1){
-       directions[dir] = false;
-       directions[dir + 1] = true;
+    void Turn(){
+        int dir = CheckDirections();
+        Debug.Log("" + dir);
+        if(dir != -1){
+        directions[dir] = false;
+        directions[(dir + 1) % 4] = true;
        }
     }
     
-    void chase(){
+    void Chase(){
          RaycastHit2D hit = Physics2D.CircleCast(transform.position, 5, Vector2.up, 0, LayerMask.GetMask("Player"));
             if (hit)
             {
@@ -129,19 +134,21 @@ public class MonsterMovement : MonoBehaviour
                 if (hit.collider.gameObject.TryGetComponent(out GameObject player))
                 {
                     mainGoal = new Vector2(player.transform.position.x, player.transform.position.y);
-                    speed += 5;
+                    //speed += 1;
     
                 }
             }
             else{
                 mainGoal = points[go%5];
-                speed -= 5;
+                //speed -= 1;
                 }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        turn();
+        Turn();
+        Debug.Log("Turning");
     }
         
 }
+
