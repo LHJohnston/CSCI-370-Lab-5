@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63d4b1b7c5bc8004aabc59548833c7d0
+guid: a1b332d585bacd949a66a74d1b5b6629
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -116,10 +116,10 @@ TextureImporter:
       name: pixil-layer-5_0
       rect:
         serializedVersion: 2
-        x: 191
-        y: 543
-        width: 770
-        height: 1282
+        x: 59
+        y: 19
+        width: 562
+        height: 981
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
