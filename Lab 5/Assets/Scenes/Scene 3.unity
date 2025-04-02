@@ -19977,6 +19977,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &383556540 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7019347881108615794, guid: f8f26db2b7732584f8ab393a46a613da, type: 3}
+  m_PrefabInstance: {fileID: 2127734545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &605012168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19993,6 +19998,10 @@ PrefabInstance:
       propertyPath: speed
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 3124756510068583305, guid: e52394c95546b0e47832e154af80b91c, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 383556540}
     - target: {fileID: 3712783542954890586, guid: e52394c95546b0e47832e154af80b91c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.58
@@ -48209,7 +48218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde7fc163d1124660980fdd9ac90ea97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 383556540}
   boundaryPercent: 0.5
   easing: 0.01
 --- !u!81 &1449025308
@@ -48986,6 +48995,10 @@ PrefabInstance:
     - target: {fileID: 7019347881108615794, guid: f8f26db2b7732584f8ab393a46a613da, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7019347881108615794, guid: f8f26db2b7732584f8ab393a46a613da, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
