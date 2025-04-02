@@ -5,6 +5,9 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rigidbody2D;
     float horizontal;
     float vertical;
+    private bool facingLeft = true;
+    Animator animator;
+    
 
     public float runSpeed = 5f;
     void Start() {
@@ -12,6 +15,9 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     void Update() {
+        float moveX = horizontal = Input.GetAxisRaw("Horizontal");
+        float moveY = vertical = Input.GetAxisRaw("Vertical");
+        
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
     }
