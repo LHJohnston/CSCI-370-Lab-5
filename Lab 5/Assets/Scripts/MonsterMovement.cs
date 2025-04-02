@@ -9,40 +9,38 @@ public class MonsterMovement : MonoBehaviour
 {
     private Rigidbody2D monsterBod;
     public float speed;
-    private Vector2 mainGoal;
-    public List<Vector2>  points;
-    private Vector2 currentPos;
 
-    private int go;
-
+    public GameObject monster;
     private string direction;
 
     private bool moving = false;
+
+    private bool playerNear = false;
+
+    public GameObject player;
 
 
 
      void Start()
     {
         monsterBod = GetComponent<Rigidbody2D>();
-        mainGoal = points[0];
-        go = 0;
         direction = "";
-        currentPos = new Vector2(monsterBod.transform.position.x, monsterBod.transform.position.y);
         MoveUp();
     }
 
 
     void Update()
     {
-        currentPos = new Vector2(monsterBod.transform.position.x, monsterBod.transform.position.y);
-        if(currentPos == mainGoal){
-            go += 1;
-            mainGoal = points[go%5];
-        }
         if(moving == false){
         MoveTowardGoal();
         }
+
         Chase();
+        if(playerNear){
+            Debug.Log("Chasing");
+            monster.transform.position = Vector2.MoveTowards(monster.transform.position, player.transform.position, speed * Time.deltaTime);
+
+        }
     }
 
 
@@ -75,21 +73,22 @@ public class MonsterMovement : MonoBehaviour
 
 
     void Chase(){
-         RaycastHit2D hit = Physics2D.CircleCast(transform.position, 5, Vector2.up, 0, LayerMask.GetMask("Player"));
+         RaycastHit2D hit = Physics2D.CircleCast(transform.position, 30, Vector2.up, 0, LayerMask.GetMask("Player"));
             if (hit)
             {
                 Debug.Log("Hit Something!!" + hit.collider.gameObject.name);
 
-                if (hit.collider.gameObject.TryGetComponent(out GameObject player))
+                if (hit.collider.gameObject.TryGetComponent(out GameObject player2))
                 {
-                    mainGoal = new Vector2(player.transform.position.x, player.transform.position.y);
                     //speed += 10;
+                    playerNear = true;
+                    
     
                 }
             }
             else{
-                mainGoal = points[go%5];
                 //speed -= 10;
+                playerNear = false;
                 }
     }
 
