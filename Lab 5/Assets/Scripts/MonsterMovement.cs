@@ -19,6 +19,12 @@ public class MonsterMovement : MonoBehaviour
 
     public GameObject player;
 
+    private bool cont = false;
+
+
+    // the distance that the monster can detect the player from
+    public int dis;
+
 
 
      void Start()
@@ -31,16 +37,25 @@ public class MonsterMovement : MonoBehaviour
 
     void Update()
     {
-        if(moving == false){
-        MoveTowardGoal();
-        }
 
         Chase();
         if(playerNear){
+            monsterBod.linearVelocity = new Vector2(0,0);
+
             Debug.Log("Chasing");
-            monster.transform.position = Vector2.MoveTowards(monster.transform.position, player.transform.position, speed * Time.deltaTime);
+            monster.transform.position = Vector2.MoveTowards(monster.transform.position, player.transform.position, 1 * Time.deltaTime);
 
         }
+        else{
+            if(moving == false || cont == true){
+            MoveTowardGoal();
+            cont = false;
+            Debug.Log("" + direction);
+            }
+        }
+
+
+        
     }
 
 
@@ -73,28 +88,30 @@ public class MonsterMovement : MonoBehaviour
 
 
     void Chase(){
-         RaycastHit2D hit = Physics2D.CircleCast(transform.position, 30, Vector2.up, 0, LayerMask.GetMask("Player"));
+         RaycastHit2D hit = Physics2D.CircleCast(transform.position, dis, Vector2.up, 0, LayerMask.GetMask("Player"));
             if (hit)
             {
                 Debug.Log("Hit Something!!" + hit.collider.gameObject.name);
 
-                if (hit.collider.gameObject.TryGetComponent(out GameObject player2))
-                {
+                
                     //speed += 10;
                     playerNear = true;
+                    cont = true;
                     
     
-                }
+                
             }
             else{
                 //speed -= 10;
                 playerNear = false;
+                //cont = true;
                 }
     }
 
 
      void MoveTowardGoal(){
-        Debug.Log("" + direction);
+        monsterBod.linearVelocity = new Vector2(0,0);
+
 
         if(direction == "Up"){
             MoveUp();
