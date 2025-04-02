@@ -15,8 +15,21 @@ public class Damage : MonoBehaviour
     {
         
     }
+    public void interact() { 
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 2, Vector2.up, 1, LayerMask.GetMask("Player"));
+            if (hit){
+                if(playerHealth == null){
+                playerHealth = hit.collider.gameObject.GetComponent<Health>();
+            }
+            playerHealth.TakeDamage(damage);
+        }
 
-    private void OlisionEnter2D(Collision2D collision)
+            }
+        
+
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player"){
             if(playerHealth == null){
@@ -26,3 +39,4 @@ public class Damage : MonoBehaviour
         }
     }
 }
+
