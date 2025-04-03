@@ -19,6 +19,6 @@ Visual Assets:
 
 What Andrew Did: 
 
-What Colten Did: 
+What Leigh Did: Leigh did the ai movement, the candle lighting and timing, and the character and candle design
 
 What Sam Did: Sam completed the tilemap for the the maze, the health and damage aspect of the games, the death screne, the particle system, and the level design.
