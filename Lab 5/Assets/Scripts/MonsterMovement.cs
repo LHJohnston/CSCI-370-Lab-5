@@ -21,6 +21,9 @@ public class MonsterMovement : MonoBehaviour
 
     private bool cont = false;
 
+    Animator animator;
+    private Vector2 lastMoveDirection;
+
 
     // the distance that the monster can detect the player from
     public int dis;
@@ -32,6 +35,8 @@ public class MonsterMovement : MonoBehaviour
         monsterBod = GetComponent<Rigidbody2D>();
         direction = "";
         MoveUp();
+
+        animator = GetComponent<Animator>();
     }
 
 
@@ -63,6 +68,9 @@ public class MonsterMovement : MonoBehaviour
          monsterBod.AddForce(transform.up * speed);
          direction = "Up";
          moving = true;
+
+        lastMoveDirection = new Vector2(0, 1);
+        SetAnimatorParameters(lastMoveDirection);
     }
 
     void MoveDown(){
@@ -70,18 +78,37 @@ public class MonsterMovement : MonoBehaviour
         direction = "Down";
         moving = true;
 
+        lastMoveDirection = new Vector2(0, -1);
+        SetAnimatorParameters(lastMoveDirection);
+
     }
 
     void MoveLeft(){
         monsterBod.AddForce(transform.right * -speed );
         direction = "Left";
         moving = true;
+
+        lastMoveDirection = new Vector2(-1, 0);
+        SetAnimatorParameters(lastMoveDirection);
     }
 
     void MoveRight(){
         monsterBod.AddForce(transform.right * speed );
         direction = "Right";
         moving = true;
+
+        lastMoveDirection = new Vector2(1, 0);
+        SetAnimatorParameters(lastMoveDirection);
+    }
+
+    void SetAnimatorParameters(Vector2 moveDirection)
+    {
+        animator.SetFloat("MoveX", moveDirection.x);
+        animator.SetFloat("MoveY", moveDirection.y);
+        animator.SetFloat("MoveMagnitude", moveDirection.magnitude);
+
+        animator.SetFloat("LastMoveX", lastMoveDirection.x);
+        animator.SetFloat("LastMoveY", lastMoveDirection.y);
     }
 
 
@@ -164,6 +191,10 @@ public class MonsterMovement : MonoBehaviour
                 }
             }
         }
+
+        lastMoveDirection = new Vector2((direction == "Left" || direction == "Right") ? (direction == "Left" ? -1 : 1) : 0, 
+                                        (direction == "Up" || direction == "Down") ? (direction == "Up" ? 1 : -1) : 0);
+        SetAnimatorParameters(lastMoveDirection);
         
 
     }
@@ -172,6 +203,7 @@ public class MonsterMovement : MonoBehaviour
     {
         Turn();
     }
+    
 
 }
 

@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour {
     float horizontal;
     float vertical;
     private Vector2 input;
-    private bool facingLeft = true;
     Animator animator;
     private Vector2 lastMoveDirection;
     
