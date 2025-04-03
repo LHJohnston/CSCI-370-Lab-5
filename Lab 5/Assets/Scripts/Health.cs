@@ -11,14 +11,14 @@ public class Health : MonoBehaviour
     void Start()
     {
         health = maxHealth;
-        slider.maxValue = maxHealth;
+        // slider.maxValue = maxHealth;
         slider.value = health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.value = health;
+        
         
     }
     public void TakeDamage(int amount){

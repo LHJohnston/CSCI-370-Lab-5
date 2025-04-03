@@ -57378,6 +57378,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 772893232339525348, guid: f8f26db2b7732584f8ab393a46a613da, type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 1689836324}
     - target: {fileID: 1948001741638221149, guid: f8f26db2b7732584f8ab393a46a613da, type: 3}
       propertyPath: m_LightType
       value: 3

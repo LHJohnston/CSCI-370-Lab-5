@@ -1957,13 +1957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sprites:
-
-
-
-    Audio:
-
-    https://opengameart.org/content/fear-of-the-dark'
+  m_text: "Audio: \nhttps://pixabay.com/music/ambient-eerie-ambient-10-205803/\nhttps://opengameart.org/content/fear-of-the-dark\n\nSprites:\nhttps://www.reddit.com/r/PixelArt/comments/2cdh4i/dungeon_background_ocwip/?rdt=56643\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8aab582b9d38eb7479d225acd19b4c09, type: 2}
   m_sharedMaterial: {fileID: -7682103650125348987, guid: 8aab582b9d38eb7479d225acd19b4c09, type: 2}
@@ -2608,14 +2602,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '"WASD" or "Arrow Keys" to Move
+  m_text: '
+
+    "WASD" or "Arrow Keys" to Move
 
 
-    "Space" Advances Text
-
-
-    "E" Lights
-    Candles'
+    "E" Lights Candles'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8aab582b9d38eb7479d225acd19b4c09, type: 2}
   m_sharedMaterial: {fileID: -7682103650125348987, guid: 8aab582b9d38eb7479d225acd19b4c09, type: 2}
