@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efea752559bfc649b72b11456432bc1, type: 3}
   m_Name: OnWakeUp
   m_EditorClassIdentifier: 
-  dialogue: []
+  dialogue:
+  - W-where am I?
+  - I think I just heard a noise...
+  - I should light up the area....
+  - Press "E" to light candles.
