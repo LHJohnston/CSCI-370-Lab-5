@@ -11,7 +11,7 @@ Aesthetics: Meant to be a somewhat scary, puzzle-like game.
 
 Joys: Drawing some of the sprite elements was a lot of fun.
 
-Struggles: 
+Struggles: Getting the damage system to take affect.
 
 Audio Assets: https://opengameart.org/content/fear-of-the-dark
 
@@ -21,4 +21,4 @@ What Andrew Did:
 
 What Colten Did: 
 
-What Jauss Did: 
+What Sam Did: Sam completed the tilemap for the the maze, the health and damage aspect of the games, the death screne, the particle system, and the level design.
