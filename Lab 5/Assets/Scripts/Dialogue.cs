@@ -9,6 +9,7 @@ public class Dialogue : MonoBehaviour
     {
         interact();
         
+        
     } 
     
 
