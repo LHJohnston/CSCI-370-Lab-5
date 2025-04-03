@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector2 input;
     Animator animator;
     private Vector2 lastMoveDirection;
+    public AudioSource walkSource;
     
 
     public float runSpeed = 5f;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
         if((moveX == 0 && moveY == 0) && horizontal != 0 || vertical != 0){
             lastMoveDirection = input;
         }
+
         
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
