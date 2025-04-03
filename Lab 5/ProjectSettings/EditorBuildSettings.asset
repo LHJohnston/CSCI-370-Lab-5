@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DifficultySelect.unity
     guid: cf233ab9b03302b4e9bebc57dab7976d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene 1(Old).unity
     guid: 0a7dd1e09ce3744fcb8891f6d718522c
   - enabled: 1
@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene 3.unity
     guid: f2c30fe57cb2c714a80e356fc2231c76
+  - enabled: 1
+    path: Assets/Scenes/Scene 1.unity
+    guid: 1a9a184ac24c0488aa5f493f00ba8ae7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

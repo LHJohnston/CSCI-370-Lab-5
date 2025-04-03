@@ -379,6 +379,14 @@ PrefabInstance:
       propertyPath: m_LightType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3483723494114768053, guid: f8f26db2b7732584f8ab393a46a613da, type: 3}
+      propertyPath: m_Size.x
+      value: 5.4593716
+      objectReference: {fileID: 0}
+    - target: {fileID: 3483723494114768053, guid: f8f26db2b7732584f8ab393a46a613da, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.032054067
+      objectReference: {fileID: 0}
     - target: {fileID: 4217256560506606093, guid: f8f26db2b7732584f8ab393a46a613da, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.04
