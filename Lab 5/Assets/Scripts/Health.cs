@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
         slider.value = health;
 
         if (health <= 0 ){
-            Destroy(gameObject);
+            Initiate.Fade("TitleScene", Color.black, 1.0f);
         }
 
     }
