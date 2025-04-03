@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Damage : MonoBehaviour
@@ -13,18 +14,20 @@ public class Damage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        interact();
         
     }
-    public void interact() { 
-            RaycastHit2D hit = Physics2D.CircleCast(transform.position, 2, Vector2.up, 1, LayerMask.GetMask("Player"));
+    void interact() { 
+            RaycastHit2D hit = Physics2D.CircleCast(transform.position, .5f, Vector2.up, 1, LayerMask.GetMask("Player"));
             if (hit){
                 if(playerHealth == null){
                 playerHealth = hit.collider.gameObject.GetComponent<Health>();
             }
             playerHealth.TakeDamage(damage);
+            Debug.Log("OW");
         }
 
-            }
+    }
         
 
 
@@ -36,6 +39,7 @@ public class Damage : MonoBehaviour
                 playerHealth = collision.gameObject.GetComponent<Health>();
             }
             playerHealth.TakeDamage(damage);
+            Debug.Log("OW");
         }
     }
 }
